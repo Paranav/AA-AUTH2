@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG" name="user-management" packages="">
+	<Properties>
+		<Property name="LOG_DIR">/E:/var/logs</Property>
+	</Properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="[%d{MM:dd HH:mm:ss.SSS}] [%level] [%logger{36}] - %msg%n" />
+		</Console>
+		<RollingFile name="DBHealth" fileName="/E:/var/log/abc/test.log" filePattern="/E:/var/log/abc/test-%d{yyyy-MM-dd}-%i.log" append="true">
+			<PatternLayout pattern="%d{DEFAULT} %-5p %c - %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="31" />
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Root level="debug">
+			<AppenderRef ref="Console" />
+		</Root>
+		<Logger name="DBHealth" level="info">
+			<AppenderRef ref="DBHealth" />
+		</Logger>
+		<logger name="com.sikshagrih.usermanagement">
+			<AppenderRef ref="Console" />
+		</logger>
+	</Loggers>
+</Configuration>

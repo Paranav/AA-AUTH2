@@ -1,0 +1,21 @@
+
+server:
+  application: user-management
+  port: 6001
+
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: paranav
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/pathshala
+    
+db:
+  healthCheck:
+    enable: true         
